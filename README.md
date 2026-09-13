@@ -54,7 +54,25 @@ The radar is the product. The terminal feed and JSON endpoints expose the same e
 | Autosnipe plan | **ALPHA** | threshold, size and execution-adapter boundary |
 | Terminal UI | **WORKING** | continuous graph, transfer tape, signal and position desk |
 
-### 01 / Inspect the money flow
+## Inside the swarm
+
+### 01 / Read the funding connectome
+
+<p align="center">
+  <img src="assets/funding-connectome.png" alt="FlySwarm funding connectome and swarm signal for a converging wallet cohort" width="100%">
+</p>
+
+The funding connectome is the main decision surface. It links known profitable wallets through fresh relay addresses into the selected token, then compresses the evidence into one **FIRE / WATCH / NOISE** signal. The desk keeps cohort overlap, returning members, liquidity input and historical hit rate beside the graph, with the transfer tape and autosnipe plan directly below it.
+
+### 02 / Detect fresh formations
+
+<p align="center">
+  <img src="assets/new-wallet-clusters.png" alt="FlySwarm scanning new wallets and funded clusters" width="72%">
+</p>
+
+The scanner separates fresh wallets from funded clusters, tracks first buys and highlights groups moving toward the same token. Operators can see scan volume, graph throughput, latency and the current enter/exit bias without leaving the formation view.
+
+### 03 / Inspect the money flow
 
 <p align="center">
   <img src="assets/wallet-cluster-map.png" alt="FlySwarm wallet cluster map showing inflows, outflows and merging wallets" width="100%">
@@ -62,7 +80,7 @@ The radar is the product. The terminal feed and JSON endpoints expose the same e
 
 The cluster map turns holder relationships into a readable funding shape. It surfaces total inflow and outflow, destination counts, connected wallet groups and the moment previously separate branches begin merging.
 
-### 03 / Act from one token desk
+### 04 / Act from one token desk
 
 <p align="center">
   <img src="assets/fly-desk.png" alt="FlySwarm token desk with contract analysis, position state and event feed" width="100%">
