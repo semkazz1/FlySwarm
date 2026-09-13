@@ -64,15 +64,7 @@ The radar is the product. The terminal feed and JSON endpoints expose the same e
 
 The funding connectome is the main decision surface. It links known profitable wallets through fresh relay addresses into the selected token, then compresses the evidence into one **FIRE / WATCH / NOISE** signal. The desk keeps cohort overlap, returning members, liquidity input and historical hit rate beside the graph, with the transfer tape and autosnipe plan directly below it.
 
-### 02 / Detect fresh formations
-
-<p align="center">
-  <img src="assets/new-wallet-clusters.png" alt="FlySwarm scanning new wallets and funded clusters" width="72%">
-</p>
-
-The scanner separates fresh wallets from funded clusters, tracks first buys and highlights groups moving toward the same token. Operators can see scan volume, graph throughput, latency and the current enter/exit bias without leaving the formation view.
-
-### 03 / Inspect the money flow
+### 02 / Inspect the money flow
 
 <p align="center">
   <img src="assets/wallet-cluster-map.png" alt="FlySwarm wallet cluster map showing inflows, outflows and merging wallets" width="100%">
