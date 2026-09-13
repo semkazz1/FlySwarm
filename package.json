@@ -1,0 +1,16 @@
+{
+  "name": "flyswarm-simulation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Connectome-inspired wallet cohort simulator",
+  "scripts": {
+    "start": "node server.mjs",
+    "build": "node scripts/build.mjs",
+    "demo": "node bin/flyswarm.mjs",
+    "test": "node test/simulation.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
