@@ -1,14 +1,14 @@
 {
-  "name": "flyswarm-simulation",
+  "name": "flyswarm",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Connectome-inspired wallet cohort simulator",
+  "description": "Wallet cohort intelligence for Robinhood Chain",
   "scripts": {
     "start": "node server.mjs",
     "build": "node scripts/build.mjs",
-    "demo": "node bin/flyswarm.mjs",
-    "test": "node test/simulation.test.mjs"
+    "cli": "node bin/flyswarm.mjs",
+    "test": "node test/engine.test.mjs"
   },
   "engines": {
     "node": ">=20"

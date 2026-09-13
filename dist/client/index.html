@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FlySwarm — connectome signal engine</title>
+  <meta name="description" content="Wallet cohort intelligence for Robinhood Chain.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">FS</span><span>FlySwarm</span></a>
+    <div class="top-meta">
+      <span class="pulse-dot"></span><span>brain online</span>
+      <span class="mode">ALPHA</span>
+      <span id="clock">00:00:00 UTC</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="market-workbench" aria-label="Robinhood token explorer">
+      <div class="workbench-top">
+        <div>
+          <p class="eyebrow">ROBINHOOD CHAIN / TOKEN INTELLIGENCE</p>
+          <h1>Find the token.<br><em>See who holds it.</em></h1>
+        </div>
+        <form id="token-search" class="token-search" role="search">
+          <label for="token-query">Search ticker or contract</label>
+          <div><input id="token-query" autocomplete="off" spellcheck="false" placeholder="$TICKER or 0x contract" aria-label="Ticker or contract address"><button>SEARCH</button></div>
+          <p><span id="live-dot" class="pulse-dot"></span><strong id="live-status">CONNECTING</strong><span id="live-source">Robinhood RPC</span></p>
+        </form>
+      </div>
+
+      <div class="token-workspace">
+        <aside class="token-rail">
+          <div class="rail-head"><strong>RECENT LAUNCHES</strong><span id="token-count">—</span></div>
+          <div id="token-loading" class="token-loading">Reading Pons V2 factory…</div>
+          <div id="token-list" class="token-list"></div>
+        </aside>
+
+        <section class="token-detail" id="token-detail">
+          <div id="detail-empty" class="detail-empty">Select a live token to inspect its holders and funding shape.</div>
+          <div id="detail-content" class="hidden">
+            <header class="detail-head">
+              <div class="token-identity"><div id="token-avatar" class="token-avatar">?</div><div><span id="token-protocol">PONS V2</span><h2 id="detail-symbol">$—</h2><p id="detail-name">—</p></div></div>
+              <div class="detail-actions"><a id="explorer-link" target="_blank" rel="noreferrer">CONTRACT ↗</a><button id="overview-button" class="active">OVERVIEW</button><button id="trace-button">SWARM TRACE</button><button id="bubble-button">BUBBLE MAP</button></div>
+            </header>
+            <div class="contract-line"><span id="detail-address">0x—</span><button id="copy-address">COPY</button></div>
+            <div class="market-stats">
+              <div><span>PRICE</span><strong id="detail-price">—</strong></div>
+              <div><span>LIQUIDITY</span><strong id="detail-liquidity">—</strong></div>
+              <div><span>24H VOLUME</span><strong id="detail-volume">—</strong></div>
+              <div><span>PHASE</span><strong id="detail-phase">—</strong></div>
+            </div>
+
+            <div id="overview-view" class="overview-view">
+              <div><span>DEPLOYER</span><strong id="detail-deployer">—</strong></div>
+              <div><span>LAUNCH BLOCK</span><strong id="detail-block">—</strong></div>
+              <div><span>DATA PATH</span><strong>FACTORY → ERC-20 → DEX</strong></div>
+              <p>Open <b>BUBBLE MAP</b> to inspect observed top holders, smart-contract accounts and wallet activity age.</p>
+            </div>
+
+            <div id="trace-view" class="trace-view hidden">
+              <header class="trace-header">
+                <div><span>FLYSWARM / COHORT RECONSTRUCTION</span><h3 id="trace-title">Waiting for wallet convergence…</h3></div>
+                <div class="trace-score"><small id="trace-status">LISTENING</small><strong id="trace-score">—</strong></div>
+              </header>
+              <div class="trace-grid">
+                <section class="trace-panel funding-panel">
+                  <div class="trace-panel-title"><span>FUNDING CHAINS</span><small>profitable wallet → fresh address → token</small></div>
+                  <div id="funding-paths" class="funding-paths"></div>
+                </section>
+                <section class="trace-panel cohort-panel">
+                  <div class="trace-panel-title"><span>KNOWN COHORT</span><small>select a wallet</small></div>
+                  <div id="trace-wallets" class="trace-wallets"></div>
+                  <div id="wallet-dossier" class="wallet-dossier"></div>
+                </section>
+                <section class="trace-panel history-panel">
+                  <div class="trace-panel-title"><span>PAST JOINT ENTRIES</span><small>cohort memory</small></div>
+                  <div id="trace-history" class="trace-history"></div>
+                </section>
+              </div>
+              <p class="trace-disclaimer">Live token discovery · prototype cohort metrics</p>
+            </div>
+
+            <div id="bubble-view" class="hidden">
+            <div class="holder-toolbar">
+              <div><strong>TOP OBSERVED HOLDERS</strong><span id="holder-coverage">live Transfer graph</span></div>
+              <div class="holder-filters" role="group" aria-label="Wallet age filter">
+                <button data-filter="ALL" class="active">ALL</button>
+                <button data-filter="NEW">NEW</button>
+                <button data-filter="ESTABLISHED">OLD</button>
+                <button data-filter="CONTRACT">CONTRACTS</button>
+              </div>
+            </div>
+            <div id="holders-loading" class="holders-loading">Building the holder graph from live RPC logs…</div>
+            <div class="bubble-layout">
+              <canvas id="holder-map" aria-label="Top holder bubble map"></canvas>
+              <div id="holder-list" class="holder-list"></div>
+            </div>
+            <p class="holder-note" id="holder-note">Wallet age is an activity heuristic, not a verified creation date.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="hero">
+      <div class="hero-art"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">CONNECTOME-INSPIRED WALLET INTELLIGENCE / 001</p>
+        <h1>The swarm remembers<br><em>who moves together.</em></h1>
+        <p class="lede">Profitable wallets fund fresh addresses. Familiar groups converge on the same meme. FlySwarm turns their funding paths into an explainable signal.</p>
+        <div class="hero-actions">
+          <a href="#terminal" class="button primary">OPEN THE BRAIN</a>
+          <span class="fine">Read-only radar · every signal keeps its receipts</span>
+        </div>
+      </div>
+      <div class="hero-readout">
+        <div><span>NEURON MOTIFS</span><strong id="motifs">14</strong></div>
+        <div><span>WALLETS</span><strong id="wallets">08</strong></div>
+        <div><span>FRESH NODES</span><strong id="fresh">00</strong></div>
+      </div>
+    </section>
+
+    <section class="manifesto">
+      <span>01 · SENSE TRANSFERS</span><i></i><span>02 · RECALL COHORTS</span><i></i><span>03 · FIRE A SIGNAL</span>
+    </section>
+
+    <section id="terminal" class="terminal-shell">
+      <div class="terminal-head">
+        <div class="window-dots"><b></b><b></b><b></b></div>
+        <span>flyswarm / neural desk</span>
+        <span id="tick">TICK 000</span>
+      </div>
+
+      <div class="dashboard">
+        <section class="panel graph-panel">
+          <div class="panel-title"><span>01 / FUNDING CONNECTOME</span><small>cohort graph</small></div>
+          <canvas id="graph"></canvas>
+          <div class="legend"><span><b class="hunter"></b>PROFIT HUNTER</span><span><b class="fresh-node"></b>FRESH WALLET</span><span><b class="token"></b>MEME</span></div>
+        </section>
+
+        <section class="panel signal-panel">
+          <div class="panel-title"><span>02 / SWARM SIGNAL</span><small id="signal-time">waiting</small></div>
+          <div id="signal-empty" class="empty">Listening for a familiar formation…</div>
+          <div id="signal" class="signal hidden">
+            <div class="signal-top"><span id="signal-status" class="status">WATCH</span><span id="signal-score" class="score">00</span></div>
+            <h2 id="signal-token">$—</h2>
+            <p id="signal-name">—</p>
+            <div class="evidence" id="evidence"></div>
+            <div class="memory-line"><span>COHORT MEMORY</span><strong id="memory">—</strong></div>
+          </div>
+        </section>
+
+        <section class="panel tape-panel">
+          <div class="panel-title"><span>03 / TRANSFER TAPE</span><small>newest first</small></div>
+          <div class="tape-head"><span>HUNTER</span><span>FRESH ADDRESS</span><span>ROUTE</span><span>VALUE</span></div>
+          <div id="tape" class="tape"></div>
+        </section>
+
+        <section class="panel sniper-panel">
+          <div class="panel-title"><span>04 / AUTOSNIPE PLAN</span><small>execution adapter pending</small></div>
+          <label class="switch-row">
+            <span><strong>AUTOSNIPE</strong><small>Prepare an entry when threshold clears</small></span>
+            <input id="enabled" type="checkbox"><i></i>
+          </label>
+          <label class="control"><span>MIN SIGNAL <output id="score-output">78</output></span><input id="min-score" type="range" min="55" max="99" value="78"></label>
+          <label class="control"><span>POSITION SIZE <output id="size-output">$250</output></span><input id="max-position" type="range" min="50" max="1000" step="50" value="250"></label>
+          <div class="positions-head"><span>PLANNED ENTRIES</span><strong id="plan-pnl">$0.00</strong></div>
+          <div id="positions" class="positions"><p>No positions. Autosnipe is disarmed.</p></div>
+        </section>
+
+        <section class="panel memory-panel">
+          <div class="panel-title"><span>05 / FORMATION MEMORY</span><small>cohort history</small></div>
+          <div id="cohorts" class="cohorts"></div>
+        </section>
+      </div>
+    </section>
+
+    <footer>
+      <div><strong>FlySwarm</strong><span>connectome signal engine</span></div>
+      <p>Live token discovery · prototype cohort metrics · read-only execution boundary</p>
+      <button id="reset">RESET SEED</button>
+    </footer>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

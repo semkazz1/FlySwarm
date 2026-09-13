@@ -2,13 +2,13 @@ import http from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { FlySwarmSimulation } from './src/simulation.mjs';
+import { FlySwarmEngine } from './src/engine.mjs';
 import { RobinhoodLive } from './src/robinhood-live.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const pub = path.join(root, 'public');
 const port = Number(process.env.PORT || 4173);
-const sim = new FlySwarmSimulation(Number(process.env.FLYSWARM_SEED || 20240627));
+const sim = new FlySwarmEngine(Number(process.env.FLYSWARM_SEED || 20240627));
 const live = new RobinhoodLive();
 const clients = new Set();
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.png': 'image/png', '.svg': 'image/svg+xml' };
@@ -63,4 +63,4 @@ function json(res, status, data) {
   res.end(JSON.stringify(data));
 }
 
-server.listen(port, '127.0.0.1', () => console.log(`FlySwarm simulation → http://127.0.0.1:${port}`));
+server.listen(port, '127.0.0.1', () => console.log(`FlySwarm radar → http://127.0.0.1:${port}`));

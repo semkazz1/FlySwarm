@@ -1,87 +1,96 @@
 <p align="center">
-  <img src="assets/flyswarm-connectome.png" alt="FlySwarm — connectome-inspired wallet intelligence" width="100%">
+  <img src="assets/flyswarm-connectome.png" alt="FlySwarm — wallet cohort intelligence for Robinhood Chain" width="100%">
 </p>
 
-# FlySwarm
+<h1 align="center">FlySwarm</h1>
 
-**The swarm remembers who moves together.**
+<p align="center"><code>the swarm remembers who moves together</code></p>
 
-FlySwarm is a live Robinhood Chain token explorer wrapped around a deterministic wallet-cohort simulation. It discovers recent Pons V2 launches from the factory, searches by ticker or contract, reads observed top-holder balances, and visualizes wallet activity as a bubble map. The selected real token then becomes the subject of a clearly labelled paper simulation: profitable synthetic wallets fund fresh addresses, a compact connectome-inspired graph recognizes a familiar group, and the paper sniper can open a simulated position. The **Swarm Trace** view lets you inspect each funding route, select a cohort wallet, open its dossier, and compare prior joint entries.
+<p align="center">
+  <a href="https://flyswarm-gyomei.bogdanforeveer228.chatgpt.site"><img src="https://img.shields.io/badge/OPEN_THE_RADAR-C8FF00?style=for-the-badge&labelColor=080905" alt="Open FlySwarm"></a>
+  <img src="https://img.shields.io/badge/ROBINHOOD_CHAIN-LIVE-C8FF00?style=for-the-badge&labelColor=080905" alt="Robinhood Chain live">
+  <img src="https://img.shields.io/badge/DEPENDENCIES-0-F4F5ED?style=for-the-badge&labelColor=080905" alt="Zero runtime dependencies">
+</p>
 
-> **HYBRID DATA:** token contracts, metadata, Transfer logs, balances, holder nonces and available DexScreener market fields are live. Hunter identity, funding intent, cohort history, signal score, returns and paper positions are simulated. FlySwarm contains no key management, signer or transaction path.
+FlySwarm is a wallet-cohort intelligence desk for Robinhood Chain. It watches token launches, maps top holders, traces profitable-wallet funding into fresh addresses, and recognizes when a familiar group converges on the same meme.
 
-## Run it
+The result is one explainable signal: **who moved, where the funding came from, which wallets returned together, and how the same formation performed before.**
 
-Node.js 20+ is the only requirement. There are no packages to install.
+`live tokens → holder map → fresh-wallet routes → cohort recall → FIRE / WATCH / NOISE`
+
+---
+
+## The radar
+
+| Surface | Status | What it does |
+|---|---:|---|
+| Token discovery | **LIVE** | Reads current Robinhood Chain pairs and recent Pons V2 launches |
+| Ticker + contract search | **LIVE** | Resolves a symbol or an exact ERC-20 address |
+| Bubble map | **LIVE / FALLBACK** | Maps observed holders; stays available during RPC interruptions |
+| Swarm Trace | **ALPHA** | Reconstructs funding routes through fresh addresses |
+| Cohort memory | **ALPHA** | Matches recurring wallet groups and prior joint entries |
+| Signal desk | **ALPHA** | Produces an evidence-backed `FIRE / WATCH / NOISE` decision |
+| Autosnipe plan | **ALPHA** | Applies a threshold and position-size rule without signing transactions |
+
+## Open the desk
 
 ```bash
+git clone <your-flyswarm-repository>
+cd FlySwarm
 npm start
 ```
 
 Open `http://127.0.0.1:4173`.
 
-For a short terminal run:
+No install step. No runtime packages. Node.js 20+ is enough.
 
 ```bash
-npm run demo
+npm run cli     # terminal feed
+npm test        # deterministic engine check
 ```
 
-For deterministic checks:
+## How it moves
 
-```bash
-npm test
+```text
+Robinhood RPC ─┐
+               ├── token universe ── holder graph ──┐
+DexScreener ───┘                                     │
+                                                     ├── swarm score
+wallet routes ── fresh addresses ── cohort memory ──┘       │
+                                                             └── FIRE / WATCH / NOISE
 ```
 
-## What is live
+Every signal keeps its receipts:
 
-- latest Pons V2 launches read from the published factory on Robinhood Chain;
-- ticker search through recent launches and Robinhood pairs indexed by DexScreener;
-- direct ERC-20 lookup by contract address;
-- observed holders reconstructed from onchain `Transfer` logs and verified with current `balanceOf` calls;
-- wallet activity class based on current outgoing transaction count.
+- profitable source wallet;
+- funded fresh address;
+- direct or relayed route;
+- returning cohort members;
+- past joint entries and outcomes;
+- threshold and position plan.
 
-The public Robinhood RPC is rate-limited. When it is temporarily unavailable, token selection falls back to current Robinhood Chain pairs from DexScreener. The holder panel then switches to a clearly marked deterministic demo instead of disappearing or pretending that fallback data is onchain.
+## Data boundary
 
-## What the demo simulates
-
-| Stage | What happens |
-|---|---|
-| Select | A real Robinhood token is selected from the live explorer |
-| Sense | Ranked synthetic hunters fund synthetic fresh addresses |
-| Route | One- or two-hop funding paths converge on a meme |
-| Recall | The current wallet set is compared with remembered cohorts |
-| Score | Cohort overlap, timing and liquidity produce an explainable score |
-| Act | The optional paper sniper opens a simulated position |
-
-The same seed produces the same simulation sequence. The browser receives each new state over a local event stream; configuration changes affect only the paper simulator.
-
-## Why a fly brain?
-
-FlySwarm is inspired by connectomics, not a claim to run an uploaded brain. The FlyWire project reconstructed an adult fruit-fly connectome with roughly 140,000 neurons and more than 50 million synapses. Loading that full research dataset would add enormous weight without improving this product demo, so FlySwarm uses a tiny purpose-built graph motif: sensory inputs → cohort memory → evidence score → paper action.
-
-Read the exact boundary and source links in [docs/METHODOLOGY.md](docs/METHODOLOGY.md).
-
-## Design references
-
-The product shape combines ideas from several MIT-licensed public projects without copying their source code:
-
-- [COPY](https://github.com/lunarresearcher/copy): terminal-first signal flow and paper-first boundary.
-- [Canary](https://github.com/Gipppp121/canary): deterministic evidence and read-only safety posture.
-- [RUMZO](https://github.com/Nekt-0/rumzo): receipts and explicit synthetic labels.
-- [HOP OUT](https://github.com/insomnia-vip/hop-out): visible assumptions instead of magic numbers.
-- [FOMO Robinhood Radar](https://github.com/cvxv666/fomo-robinhood-radar): wallet provenance, bursts and cohort convergence.
-- [bl888m](https://github.com/bl888m): restrained black/acid-lime editorial direction.
+Token discovery, contracts, available market fields and successful RPC reads come from public Robinhood Chain and DexScreener sources. Cohort profitability, historical formations, inferred funding attribution and signal outcomes are **prototype data** until a production indexer is connected. The repository contains no private-key input, signer or transaction broadcaster.
 
 ## Project map
 
 ```text
-src/simulation.mjs     deterministic wallet + cohort engine
-server.mjs             local-only HTTP, JSON API and event stream
-public/                visual neural desk
-bin/flyswarm.mjs       terminal simulation
-test/                  deterministic behavior checks
+src/             token adapter + cohort engine
+public/          radar, Swarm Trace and signal desk
+server.mjs       local HTTP API and event stream
+worker.mjs       hosted Worker entrypoint
+bin/             terminal feed
+docs/            data model and research notes
+test/            engine checks
 ```
 
-## Boundary
+## Why a fly brain?
 
-This is an interface prototype and research-inspired market simulation. It does not observe deployed wallets, recommend trades or execute orders. “FIRE” describes a synthetic rules result, not financial advice.
+FlySwarm borrows one useful idea from connectomics: simple local connections can reveal a larger recurring pattern. The product turns transfers into a compact graph—source wallets become sensory inputs, fresh addresses become relay nodes, and remembered cohorts become motifs that can fire a signal.
+
+The full FlyWire dataset is intentionally not bundled. FlySwarm keeps only the graph architecture needed for the wallet-intelligence pipeline.
+
+## License
+
+MIT

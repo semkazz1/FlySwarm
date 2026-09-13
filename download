@@ -1,4 +1,0 @@
-.flyswarm/
-.env
-node_modules/
-*.log

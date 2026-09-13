@@ -1,7 +1,7 @@
-import { FlySwarmSimulation } from './src/simulation.mjs';
+import { FlySwarmEngine } from './src/engine.mjs';
 import { RobinhoodLive } from './src/robinhood-live.mjs';
 
-const sim = new FlySwarmSimulation(20240627);
+const sim = new FlySwarmEngine(20240627);
 const live = new RobinhoodLive();
 
 const json = (data, status = 200) => new Response(JSON.stringify(data), {
