@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/flyswarm-connectome.png" alt="FlySwarm — wallet cohort intelligence for Robinhood Chain" width="100%">
+  <img src="assets/flyswarm-banner.png" alt="FlySwarm — fly-brain wallet intelligence" width="100%">
 </p>
 
 <h1 align="center">FlySwarm</h1>
@@ -54,11 +54,31 @@ The radar is the product. The terminal feed and JSON endpoints expose the same e
 | Autosnipe plan | **ALPHA** | threshold, size and execution-adapter boundary |
 | Terminal UI | **WORKING** | continuous graph, transfer tape, signal and position desk |
 
-## FlySwarm neural desk
+## Inside the swarm
+
+### 01 / Detect fresh formations
 
 <p align="center">
-  <img src="assets/flyswarm-terminal.png" alt="FlySwarm neural desk showing wallet convergence and a FIRE signal" width="100%">
+  <img src="assets/new-wallet-clusters.png" alt="FlySwarm scanning new wallets and funded clusters" width="72%">
 </p>
+
+The scanner separates fresh wallets from funded clusters, tracks first buys and highlights groups moving toward the same token. Operators can see scan volume, graph throughput, latency and the current enter/exit bias without leaving the formation view.
+
+### 02 / Inspect the money flow
+
+<p align="center">
+  <img src="assets/wallet-cluster-map.png" alt="FlySwarm wallet cluster map showing inflows, outflows and merging wallets" width="100%">
+</p>
+
+The cluster map turns holder relationships into a readable funding shape. It surfaces total inflow and outflow, destination counts, connected wallet groups and the moment previously separate branches begin merging.
+
+### 03 / Act from one token desk
+
+<p align="center">
+  <img src="assets/fly-desk.png" alt="FlySwarm token desk with contract analysis, position state and event feed" width="100%">
+</p>
+
+The token desk keeps contract lookup, price context, pool depth, wallet activity, position state and the event tape on one screen. A ticker or contract can be analyzed without losing the cluster evidence that produced the signal.
 
 > <code>npm start</code> opens the local radar. <code>npm run cli</code> runs the terminal feed. <code>npm test</code> checks the cohort engine.
 
